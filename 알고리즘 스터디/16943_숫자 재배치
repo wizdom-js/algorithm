@@ -1,0 +1,21 @@
+import sys
+sys.stdin = open('input.txt')
+
+from itertools import permutations
+
+a, b = input().split()
+b = int(b)
+
+a_list = sorted(list(permutations(a, len(a))), reverse=True)
+print(a_list)
+
+for num in a_list :
+    temp_a = int(''.join(num))
+
+    if temp_a < b and num[0] != '0':
+        print(temp_a)
+        break
+
+else:
+    print(-1)
+
