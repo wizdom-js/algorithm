@@ -1,0 +1,23 @@
+import sys
+sys.stdin = open('input.txt')
+
+n = int(input())
+people = [tuple(map(int, input().split())) for i in range(n)]
+people_count = [0 for i in range(n)]
+people_rank = [0 for i in range(n)]
+
+
+for idx, (x, y) in enumerate(people):
+    count = 1
+    for i in range(n):
+        if x < people[i][0] and y < people[i][1]:
+            count += 1
+
+    people_rank[idx] = count
+
+print(*people_rank)
+
+
+
+
+
