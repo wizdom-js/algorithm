@@ -14,9 +14,9 @@ for a in range(j):
 
     # 다음 사과 떨어지는 위치가 바구니보다 왼쪽에 있다면
     if next_s < s:
-        e -= s - next_s
-        move += s - next_s
-        s = next_s
+        e -= s - next_s     # 바구니 끝 지점 옮기기
+        move += s - next_s  # 이동 거리 추가
+        s = next_s          # 바구니 시작 지점 다음 지점으로 옮기기
 
     # 다음 사과 떨어지는 위치가 바구니보다 오른쪽에 있다면
     elif e < next_s:
