@@ -16,13 +16,12 @@ for idx in range(1, tc+1):
     # 서류 기준으로 정렬했으니 면접 등수만 보면된다.
     temp_g = n+1    # 임시 변수 (최저등급 +1)
     for grade in grades:
-        # 현재 등수가 임시 변수에 저장된 등수보다 높다면
+        # 현재 면접 등수가 임시 변수에 저장된 등수보다 높다면
         # 서류 또는 면접에서 높은 것이므로 뽑는다. 예) [(1, 5), (2, 3)]
-        g = grade[1]
-        if g < temp_g:
+        if grade[1] < temp_g:
             answer += 1
-            temp_g = g  # 갱신
-        if g == 1:  # 최고등급이면 for문 중단
+            temp_g = grade[1]  # 갱신
+        if grade[1] == 1:  # 최고등급이면 for문 중단
             break
     print(answer)
 

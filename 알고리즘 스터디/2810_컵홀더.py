@@ -1,6 +1,8 @@
 import sys
 sys.stdin = open('input.txt')
 
+# *S*LL*LL*S*S*LL*
+
 n = int(input())        # 사람 수
 seats = list(input())   # 좌석 배치도
 

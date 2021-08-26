@@ -20,3 +20,19 @@ for day in range(n):
     answer += trees_info[day][0] * day + trees_info[day][1]
 
 print(answer)
+
+
+# 더 간단한 풀이
+# N = int(input())
+#
+# first = list(map(int, input().split()))
+# grow = list(map(int, input().split()))
+#
+# grow.sort()
+#
+# sum = sum(first)
+#
+# for i in range(N):
+#     sum += i*grow[i]
+#
+# print(sum)

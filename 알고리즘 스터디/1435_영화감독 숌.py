@@ -17,11 +17,3 @@ while ok <= n:
         print(a, b, 666)
 
     ok += 1
-# ok = 0
-# for num in map(str, range(666, 10000000000000000000000)):
-#     if '666' in num:
-#         ok += 1
-#
-#     if ok == n:
-#         break
-# print(num)

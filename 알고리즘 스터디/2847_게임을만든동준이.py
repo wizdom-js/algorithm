@@ -23,6 +23,10 @@ for i in range(n-2, -1, -1):
 print(answer)
 
 
+
+
+
+
 # stage1 = levels.pop()   # 찐 끝판왕 레벨 가져오기
 # while levels:
 #     stage2 = levels.pop()       # 현재 남아있는 레벨 중 끝판왕 가져오기
