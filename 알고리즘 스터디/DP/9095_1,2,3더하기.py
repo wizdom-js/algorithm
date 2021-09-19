@@ -19,3 +19,24 @@ for i in range(tc):
     n = int(input())
     dp(n)
     print(dp_l[n])
+
+
+
+############################
+
+# dp 리스트
+dp_l = [0 for _ in range(11)]
+dp_l[1] = 1
+dp_l[2] = 2
+dp_l[3] = 4
+
+tc = int(input())
+for i in range(tc):
+    n = int(input())
+
+    for i in range(4, n+1):
+        if dp_l[i]: # 이미 값을 저장했다면 pass
+            continue
+        dp_l[i] = dp_l[i-1] + dp_l[i-2] + dp_l[i-3]
+
+    print(dp_l[n])
