@@ -10,7 +10,7 @@ def solution(cacheSize, cities):
         else:               # cache miss인 경우
             time += 5
             cache.append(city)
-            if cacheSize < len(cache):  # cashe가 다 채워지지 않는 경우도 있으므로 조건문 달아줘야함
+            if cacheSize < len(cache):  # cache가 다 채워지지 않는 경우도 있으므로 조건문 달아줘야함
                 del cache[0]
 
     return time

@@ -17,7 +17,7 @@ def solution(str1, str2):
 
     intersection = 0  # 교집합 계산
     for i in str1_set:
-        if i in str2_set[:]:
+        if i in str2_set:
             intersection += 1
             str2_set.remove(i)  # 중복 방지를 위해 삭제
 
@@ -27,3 +27,11 @@ def solution(str1, str2):
         return 65536
     else:
         return int(intersection / union * 65536)
+
+
+arr = list(range(1, 11))
+for i in arr:
+    print(i)
+    arr.remove(i)
+
+print(arr)
