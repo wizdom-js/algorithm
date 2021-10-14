@@ -30,6 +30,7 @@ def solution(msg):
 
 #######################################################
 
+
 # 딕셔너리 만들기
 def dictionary():
     dic = {}
@@ -54,8 +55,8 @@ def solution1(msg):
                 w = w + c   # 합쳐줘
                 if msg:                # 뽑을거 있다면 새 글자 하나 더 뽑기
                     c = msg.pop()
-                else:           # 마지막 글자까지 더한게 모든 글자 다 처리한 경우
-                    last = False       # 스위치 꺼
+                else:           # 마지막 글자까지 더한게 딕셔너리에 있었던 경우
+                    last = False       # 마지막 글자 처리 못하도록
                     break
 
                 if w + c not in dic:    # 하나 더 뽑은게 사전에 없다면 멈춰
@@ -66,8 +67,8 @@ def solution1(msg):
         answer.append(dic[w])   # 있는 글자는 색인 번호 배열에 추가
         w = c   # c부터 시작
 
-    if last:    # 한글자 남은 경우 (c에 글자 남아있었던 경우)
-        answer.append(dic[w])   # 한글자 처리
+    if last:    # 마지막 글자가 딕셔너리에 없었던 경우
+        answer.append(dic[w])   # 맨 마지막 한글자 처리
 
     print(dic)
     return answer
