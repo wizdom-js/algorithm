@@ -1,26 +1,15 @@
 def solution(record):
-    log = {}
-    ment = []
-    answer = []
+    id_nick = {}    # id에 따른 닉네임 저장
+    log = []        # 들어왔다 나갔다 기록
 
-    enter_chat = "님이 들어왔습니다."
-    leave_chat = "님이 나갔습니다."
+    for rec in record:
+        rec = rec.split()       # 띄워쓰기 기준으로 분리
+        if rec[0] == 'Enter':   # 채팅방에 들어온 경우
+            id_nick[rec[1]] = rec[2]    # id를 키로, nickname을 value로 저장
+            log.append((rec[1], '님이 들어왔습니다.'))  # 채팅방 출입 기록에 저장
+        elif rec[0] == 'Leave': # 채팅방 나간 경우
+            log.append((rec[1], '님이 나갔습니다.'))   # 채팅방 출입 기록에 저장
+        else:                   # 닉네임 수정한 경우
+            id_nick[rec[1]] = rec[2]    # 딕셔너리에서 수정해주기
 
-    for chat in record :
-        if chat.count(" ") == 2 :
-            state, user, name = chat.split(" ")
-        else :
-            state, user = chat.split(" ")
-
-        if state == "Enter" :
-            log[user] = name
-            ment.append([user, enter_chat])
-        elif state == "Leave" :
-            ment.append([user, leave_chat])
-        elif state == "Change" :
-            log[user] = name
-
-    for i in ment :
-        answer.append(log[i[0]]+i[1])
-
-    return answer
+    return [id_nick[l[0]]+l[1] for l in log]    # id별 저장한 닉네임 불러와서 출입기록과 합쳐주기
