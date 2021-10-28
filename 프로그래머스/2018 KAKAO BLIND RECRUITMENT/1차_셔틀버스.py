@@ -27,4 +27,4 @@ def solution(n, t, m, timetable):
                 break       # 다음 버스 오도록 break
 
     hour, minutes = divmod(bus_time, 60)
-    return f'{hour:0>2}:{minutes:0>2}'  # break 안걸렸으면 마지막 버스 타 그냥 
+    return f'{hour:0>2}:{minutes:0>2}'  # break 안걸렸으면 마지막 버스 타 그냥
