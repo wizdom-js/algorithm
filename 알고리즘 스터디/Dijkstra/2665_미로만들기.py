@@ -22,6 +22,7 @@ def dijkstra():
             nx = x + dx[i]
             if 0 <= ny < n and 0 <= nx < n:
                 room = 0 if rooms[ny][nx] else 1
+                # room = 1 ^ rooms[ny][nx]  # 같으면 0 다르면 1
                 nd = d + room
 
                 if nd < dist[ny][nx]:
