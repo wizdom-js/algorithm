@@ -58,6 +58,6 @@ for i in set(parent):   # 중복 거르기
 
 answer.sort()   # 오름차순으로 정렬
 
-print(len(answer)) 
+print(len(answer))
 print(*answer)
 

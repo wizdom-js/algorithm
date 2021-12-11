@@ -14,6 +14,8 @@ for i in range(n):    # i == 오른쪽 포인터
         for j in range(p, i+1):     # 합한 숫자들에서 맨 왼쪽 숫자 빼보면서 길이 줄이기
             tmp_sum -= numbers[j]   # 가장 왼쪽 숫자 (가장 먼저 더한 숫자 빼기)
             if tmp_sum < s:         # 목표 합(s)보다 작아졌다면 (목표 합보다 작아질 때까지 빼는거임)
+                # tmp_l = i - j + 1
+                # answer = tmp_l if tmp_l < answer else answer
                 answer = min(i - j + 1, answer) # 길이 짧은걸로 갱신
                 p = j + 1   # (왼쪽) 포인터는 방금 뺀 숫자의 다음부터 시작
                 # (방금 뺀 숫자를 포함하면 목표 합이 된다. 방금 뺀 숫자를 포함하지 않으면 목표 합보다 작아지므로 거기서부터 다시 오른쪽 포인터 옮기면서 더해간다)
