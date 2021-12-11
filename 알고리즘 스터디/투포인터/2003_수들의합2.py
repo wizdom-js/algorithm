@@ -7,22 +7,22 @@ numbers = list(map(int, input().split()))
 # s, e = 0, 1
 # answer = 0
 
-######## 풀이 1 ######
+######## 풀이 1 (sum 활) ######
 # while e <= n and s <= e:
-#     tmp = sum(numbers[s:e])
+#     tmp = sum(numbers[s:e])   # 합 구하기
 #
-#     if tmp == m:
+#     if tmp == m:      # 목표 한 수라면
 #         answer += 1
-#         e += 1
-#     elif tmp > m:
-#         s += 1
-#     else:
-#         e += 1
+#         e += 1    # e 포인터 옮기기
+#     elif tmp > m:     # 목표한 수보다 크다면
+#         s += 1    # s 포인터 옮기기
+#     else:             # 목표한 수보다 작다면
+#         e += 1    # e 포인터 옮기기
 #
 # print(answer)
 
 
-######## 풀이 2 ######
+######## 풀이 2 (sum 활용 X) ######
 s, e = 0, 0
 answer = 0
 tmp = 0
@@ -40,7 +40,7 @@ while e <= n and s <= e:
 print(answer)
 
 
-######## 풀이 3 ######
+######## 풀이 3 (for문으로 s 고정) ######
 # tmp = 0
 # for s in range(n):
 #     while tmp < m and e < n:
