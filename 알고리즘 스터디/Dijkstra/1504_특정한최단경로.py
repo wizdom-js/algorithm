@@ -3,7 +3,7 @@ sys.stdin = open('input.txt')
 
 import heapq
 
-def dikstra(s, e):
+def dijkstra(s, e):
     dist = [float('inf') for _ in range(n + 1)] # 초기화
 
     queue = []
@@ -25,7 +25,7 @@ def dikstra(s, e):
                 heapq.heappush(queue, [nd, next[0]]) # 정점으로 가보기
 
     return dist[e]  # 거리 반환
-
+j
 
 n, e = map(int, input().split()) # 정점의 개수 n, 간선의 개수 e
 
@@ -36,9 +36,9 @@ for i in range(e):
     visited[e].append([s, l])
 
 v1, v2 = map(int, input().split())  # 반드시 거쳐야 하는 두 개의 정점
-mid = dikstra(v1, v2)   # v1 <-> v2 거리
-answer1 = dikstra(1, v1) + mid + dikstra(v2, n) # 1 -> v1 -> v2 -> n
-answer2 = dikstra(1, v2) + mid + dikstra(v1, n) # 1 -> v2 -> v1 -> n
+mid = dijkstra(v1, v2)   # v1 <-> v2 거리
+answer1 = dijkstra(1, v1) + mid + dijkstra(v2, n) # 1 -> v1 -> v2 -> n
+answer2 = dijkstra(1, v2) + mid + dijkstra(v1, n) # 1 -> v2 -> v1 -> n
 
 if answer1 == float('inf') and answer2 == float('inf'): # 경로 없을경우
     print(-1)
