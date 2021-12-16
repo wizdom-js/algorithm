@@ -4,7 +4,8 @@ sys.stdin = open('input.txt')
 # 학생이 남자일 경우
 def boy(n):
     for i in range(n, switch_n+1, n): # 받은 수의 배수의 스위치 상태 바꾸기
-        switch_on_off(i-1)  # 숫자가 1번부터 시작이니까 -1번째의 스위치 상태 변경
+        # switch_on_off(i-1)  # 숫자가 1번부터 시작이니까 -1번째의 스위치 상태 변경
+        switch[i-1] ^= 1
 
 # 학생이 여자일 경우
 def girl(n):
@@ -12,8 +13,10 @@ def girl(n):
     tmp = 1
     while 0 <= n-tmp and n+tmp < switch_n:  # 인덱스 범위 설정
         if switch[n-tmp] == switch[n+tmp]:  # 좌우가 대칭이라면 스위치 상태 바꾸기
-            switch_on_off(n-tmp)
-            switch_on_off(n+tmp)
+            # switch_on_off(n-tmp)
+            # switch_on_off(n+tmp)
+            switch[n-tmp] ^= 1
+            switch[n+tmp] ^= 1
         else:
             break   # 대칭 아니면 중단
         tmp += 1    # 다음 좌우 스위치 보기

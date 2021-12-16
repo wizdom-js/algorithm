@@ -34,7 +34,6 @@ for i in range(n):
         if grid[i][j] == 'G':   # 적녹색 차이를 거의 느끼지 못하기 때문에 통일 시켜주기
             grid[i][j] = 'R'
 
-
 visited = [[False for _ in range(n)] for _ in range(n)]
 for i in range(n):
     for j in range(n):
