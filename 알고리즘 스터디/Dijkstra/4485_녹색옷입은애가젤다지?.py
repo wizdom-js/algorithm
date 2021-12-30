@@ -25,7 +25,7 @@ def dijkstra():
         for i in range(4):
             ny = y + dy[i]
             nx = x + dx[i]
-            if 0 <= ny < n and 0 <= nx < n :
+            if 0 <= ny < n and 0 <= nx < n:
                 nd = d + rupee[ny][nx]
                 if nd < visited[ny][nx]:
                     visited[ny][nx] = nd

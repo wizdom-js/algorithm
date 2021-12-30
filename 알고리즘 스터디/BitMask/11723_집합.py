@@ -19,5 +19,5 @@ for i in range(m):
             print(1 if s & (1 << n) else 0)
         elif command == 'toggle':
             s ^= (1 << n)
-print((1 << 21 )-1)
+print((1 << 21)-1)
 print(int(0b111111111111111111111))
