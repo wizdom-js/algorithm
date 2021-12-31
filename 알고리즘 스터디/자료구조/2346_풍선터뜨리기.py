@@ -30,12 +30,6 @@ sys.stdin = open('input.txt')
 #         else:
 #             p %= n
 
-def num(p):
-    if p < 0:
-        p += n
-    else:
-        p %= n
-    return p
 
 
 
