@@ -51,22 +51,24 @@ sys.stdin = open('input.txt')
 #             rainwater += max_h2 - j
 # print(rainwater)
 
-h, w = map(int, input().split())
-blocks_h = list(map(int, input().split()))
+h, w = map(int, input().split())    # 세로 길이 h, 가로 길이 w
+blocks_h = list(map(int, input().split()))  # 블록의 높이들
 
-l = 0
-r = w-1
+l = 0   # 왼쪽 포인터
+r = w-1 # 오른쪽 포인터
 
-max_l = max_r = 0
-rainwater = 0
+max_l = max_r = 0   # 왼쪽, 오른쪽의 각 블록의 최대 높이를 저장할 변수
+rainwater = 0   # 고이는 빗물의 총량
 while l < r:
+    # 각 블록의 최대 높이 갱신
     max_l = max(max_l, blocks_h[l])
     max_r = max(max_r, blocks_h[r])
-    if max_l < max_r:
-        rainwater += max_l - blocks_h[l]
+
+    if max_l < max_r:   # 오른쪽 블럭이 더 큰 경우
+        rainwater += max_l - blocks_h[l]    # 왼쪽 블럭을 기준으로 빗물 계산
         l += 1
-    else:
-        rainwater += max_r - blocks_h[r]
+    else:               # 왼쪽 블럭이 더 큰 경우
+        rainwater += max_r - blocks_h[r]    # 오른쪽 블럭을 기준으로 빗물 계산
         r -= 1
 
 print(rainwater)
