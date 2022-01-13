@@ -28,18 +28,5 @@ for i in range(5, n):
             break
 print(p_num1 * p_num2)
 
-#     if i * i > n:
-#         break
-#
-#     if is_prime[i] and n % i == 0:
-#         p_num2 = n // i
-#         if is_prime[p_num2]:
-#             p_num1 = i
-#             break
-#
-# for i in range(p_num2+1, n+1):
-#     if is_prime[i]:
-#         print(i * p_num1)
-#         break
 
 

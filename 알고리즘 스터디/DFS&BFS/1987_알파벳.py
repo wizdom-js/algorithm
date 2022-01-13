@@ -32,7 +32,6 @@ def dfs(y, x, cnt):
                 alphabet[ord(board[ny][nx])] = False
 
 def dfs_bit(y, x, cnt, visit):
-
     global answer
     if answer < cnt:
         answer = cnt
@@ -44,7 +43,7 @@ def dfs_bit(y, x, cnt, visit):
             if visit & bit:
                 continue
             dfs_bit(ny, nx, cnt + 1, visit|bit)
-            visit &= ~bit
+            # visit &= ~bit
 
 
 h, w = map(int, input().split())    # 세로 h, 가로 w
