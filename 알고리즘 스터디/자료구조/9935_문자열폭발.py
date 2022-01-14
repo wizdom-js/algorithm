@@ -30,20 +30,21 @@ from collections import deque
 #     print('FRULA')
 
 
-words = input()
-explode = list(input())
+words = input() # 입력받은 문자열
+explode = list(input()) # 폭발 문자열
 exp_l = len(explode)
 
-p = 0
 new_words = []
 
 for word in words:
-    new_words.append(word)
+    new_words.append(word)  # 기존 문자열의 단어 하나를 새 리스트에 추가
+    # new_words의 마지막 글자가 폭발 문자열의 마지막 글자와 같고,
+    # 그래서 끝의 글자들이 폭발 문자열과 같다면
     if new_words[-1] == explode[-1] and new_words[-exp_l:] == explode:
-        for _ in range(exp_l):
+        for _ in range(exp_l):  # 폭발 시키기 (문자 제거)
             new_words.pop()
 
-if new_words:
+if new_words:  # 문자 남아있다면 문자열로 변환하여 print
     print(''.join(new_words))
 else:
-    print('FRULA')
+    print('FRULA')  # 남아있는 문자 없는 경우
