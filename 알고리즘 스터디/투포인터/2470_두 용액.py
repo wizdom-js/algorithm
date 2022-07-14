@@ -16,13 +16,11 @@ solution2 = -1  # 갱신될 용액의 값 2
 # s <= e 로 할 경우 같은 곳에서 멈추는 경우가 있음
 while s < e:
     mix = solution_values[s] + solution_values[e]   # 용액 혼합하기
-    if mix == 0:
+    if abs(mix) < abs(gap):   # 혼합한 절댓값이 저장되어있는 특성 값보다 절댓값이 작다면 갱신
         solution1 = solution_values[s]
         solution2 = solution_values[e]
-        break
-    elif abs(mix) < abs(gap):   # 혼합한 절댓값이 저장되어있는 특성 값보다 절댓값이 작다면 갱신
-        solution1 = solution_values[s]
-        solution2 = solution_values[e]
+        if mix == 0:
+            break
         gap = mix
 
     if mix < 0: # 용액이 0보다 작다면 좀 더 큰값으로 바ㅂ꾸기
@@ -31,3 +29,4 @@ while s < e:
         e -= 1
 
 print(solution1, solution2)
+
