@@ -1,13 +1,14 @@
 def solution(n, words):
-    answer = [0, 0]
-
-    stack = [words[0]]
-    for i in range(1, len(words)):
-        if stack[-1][-1] == words[i][0] and words[i] not in stack:
-            stack.append(words[i])
+    people = [0 for _ in range(n)]
+    said_words = []
+    last_word = words[0][0]
+    for i in range(len(words)):
+        word = words[i]
+        people[i%n] += 1
+        if word in said_words or word[0] != last_word:
+            return [i%n+1, people[i%n]]
         else:
-            answer[0] = (i % n) + 1
-            answer[1] = i // n + 1
-            break
-
-    return answer
+            said_words.append(word)
+            last_word = word[-1]
+    else:
+        return [0, 0]
