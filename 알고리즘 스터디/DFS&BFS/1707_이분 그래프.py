@@ -15,7 +15,7 @@ def dfs(now, color):
 
 def bfs(s):
     queue = deque([s])
-
+    node_color[s] = 1
     while queue:
         now = queue.popleft()
         for next in graph[now]:
@@ -40,9 +40,8 @@ for _ in range(k):
 
     node_color = [0 for _ in range(v + 1)]
     for i in range(1, v + 1):
-        if node_color[i] == 0:
+        if not node_color[i]:
             # dfs(i, 1)
-            node_color[i] = 1
             if not bfs(i):
                 is_bipartite = False
                 break
