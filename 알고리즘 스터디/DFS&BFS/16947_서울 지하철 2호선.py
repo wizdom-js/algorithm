@@ -51,6 +51,7 @@ loop_station[0] = False
 #     is_loop(start, 0)
 
 # 순환역이 아닌 역들 끝에서부터 지워나가며 순환역만 남기기
+# 참고 https://vixxcode.tistory.com/25
 while 1 in graph_size:  # 이어진 역이 1개인 역이 없을 때까지 반복 (순환역은 최소 2개)
     for i in range(1, n):
         if graph_size[i] == 1:  # 이어진 역이 하나 뿐이라면 => 순환역 아니라면
@@ -63,4 +64,4 @@ for station in range(1, n):
     if loop_station[station]:   # 순환역이면 0 출력
         print(0, end=' ')
     else:
-        get_distance(station)   # 순환역이 아니라면 거리 찾기 
+        get_distance(station)   # 순환역이 아니라면 거리 찾기
