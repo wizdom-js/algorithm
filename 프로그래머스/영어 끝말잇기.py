@@ -1,14 +1,12 @@
 def solution(n, words):
-    people = [0 for _ in range(n)]
-    said_words = []
-    last_word = words[0][0]
+    said_words = [] # 이미 말한 단어들
+    last_word = words[0][0] # 처음 시작할 스펠링 (for문안에서 조건문(i != 0) 한번 더 쓰는거 방지하기 위함)
     for i in range(len(words)):
         word = words[i]
-        people[i%n] += 1
-        if word in said_words or word[0] != last_word:
-            return [i%n+1, people[i%n]]
-        else:
-            said_words.append(word)
-            last_word = word[-1]
-    else:
-        return [0, 0]
+        if word in said_words or word[0] != last_word:  # 현재 단어가 이미 말한 단어이거나 끝 스펠링으로 시작하지 않은 경우
+            return [i%n+1, i//n+1]  # [번호, 차례] return
+        else:   # 끝말잇기가 맞는 경우
+            said_words.append(word) # 이미 말한 단어에 추가
+            last_word = word[-1]    # 끝 스펠링 바꾸기
+
+    return [0, 0]   # 탈락자가 생기지 않은 경우 
