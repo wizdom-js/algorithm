@@ -14,6 +14,6 @@ for x1 in range(1, n+1):
     for y1 in range(1, n+1):
         for x2 in range(x1, n+1):
             for y2 in range(y1, n+1):
-                answer = max(answer, prefix_sum[x1-1][y1-1] - prefix_sum[y1-1][x2] - prefix_sum[y2][x1-1] + prefix_sum[y2][x2])
+                answer = max(answer, prefix_sum[y2][x2] + prefix_sum[y1-1][x2] - prefix_sum[y2][x1-1] - prefix_sum[y1-1][x1-1])
 
 print(answer)
