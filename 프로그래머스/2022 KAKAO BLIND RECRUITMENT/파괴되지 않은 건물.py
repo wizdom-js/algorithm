@@ -31,4 +31,6 @@ def solution(board, skill):
             if board[y][x] > 0:
                 answer += 1
 
+    [i+1][j+1] = [i][j+1] + [i+1][j] - [i][j] - ekfmsrj[i][j]
+
     return answer
