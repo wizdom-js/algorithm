@@ -12,25 +12,34 @@ def solution(board, skill):
         tmp[r2 + 1][c1] += -degree
         tmp[r2 + 1][c2 + 1] += degree
 
-    # 행 누적합
-    for y in range(h):
-        for x in range(w):
-            tmp[y][x + 1] += tmp[y][x]
+    # # v1 => 따로 따로
+    # # 행 누적합
+    # for y in range(h):
+    #     for x in range(w):
+    #         tmp[y][x + 1] += tmp[y][x]
+    #
+    # # 열 누적합
+    # for y in range(h):
+    #     for x in range(w):
+    #         tmp[y + 1][x] += tmp[y][x]
+    #
+    # answer = 0
+    # # 기존 내구도랑 합치기
+    # for y in range(h):
+    #     for x in range(w):
+    #         board[y][x] += tmp[y][x]
+    #         # 내구도가 1 이상이면 정답 +1
+    #         if board[y][x] > 0:
+    #             answer += 1
 
-    # 열 누적합
-    for y in range(h):
-        for x in range(w):
-            tmp[y + 1][x] += tmp[y][x]
-
+    # v2 => 통합하여 계산하기
     answer = 0
-    # 기존 내구도랑 합치기
+    prefix = [[0 for _ in range(w + 1)] for _ in range(h + 1)]
     for y in range(h):
         for x in range(w):
-            board[y][x] += tmp[y][x]
-            # 내구도가 1 이상이면 정답 +1
+            prefix[y + 1][x + 1] = prefix[y][x + 1] + prefix[y + 1][x] - prefix[y][x] + tmp[x][y]
+            board[y][x] += prefix[y + 1][x + 1]
             if board[y][x] > 0:
                 answer += 1
-
-    [i+1][j+1] = [i][j+1] + [i+1][j] - [i][j] - ekfmsrj[i][j]
 
     return answer
