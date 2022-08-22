@@ -1,51 +1,45 @@
 import heapq
 
 
-def dijkstra(n, s, summits, point_info):
-    dist = [float('inf') for _ in range(n + 1)]
-    queue = []
-    heapq.heappush(queue, [0, s])
-    dist[s] = 0
-    while queue:
-        d, now = heapq.heappop(queue)
-
-        if now in summits:
-            return d
-
-        for nxt in point_info[now]:
-            nd = nxt[1] + d
-
-            if nd < dist[nxt[0]]:
-                dist[nxt[0]] = nd
-                heapq.heappush(queue, [nd, nxt[0]])
-
-
-from collections import deque
-
-
 def solution(n, paths, gates, summits):
+    def find_intensity():
+        dist = [float('inf') for _ in range(n + 1)]
+
+        queue = []
+        for gate in gates:
+            heapq.heappush(queue, [0, gate])
+            dist[gate] = 0
+
+        while queue:
+            intensity, now = heapq.heappop(queue)
+
+            if now in summits:
+                continue
+
+            if dist[now] < intensity:
+                continue
+
+            for nxt, nxt_i in point_info[now]:
+                choosed_i = nxt_i if nxt_i > intensity else intensity
+                if choosed_i < dist[nxt]:
+                    dist[nxt] = choosed_i
+                    heapq.heappush(queue, [choosed_i, nxt])
+
+        answer = [0, 9999999999]
+        for summit in summits:
+            if dist[summit] < answer[1]:
+                answer[0] = summit
+                answer[1] = dist[summit]
+
+        return answer
+
     point_info = [[] for _ in range(n + 1)]
+
     for point1, point2, time in paths:
         point_info[point1].append([point2, time])
+        point_info[point2].append([point1, time])
 
-    max_time = 99999999
-    candi = []
-
-    def bfs(s):
-        queue = deque([[s, 0]])
-        while queue:
-            now, tmp_t = queue.popleft()
-            for nxt, time in point_info[now]:
-                if nxt not in summits:
-                    queue.append([nxt, max(tmp_t, time)])
-                else:
-                    candi.append([nxt, tmp_t])
-
-    for gate in gates:
-        tmp = bfs(gate)
-
-    candi.sort(key=lambda x: [x[1], x[0]])
-    print(candi)
+    return find_intensity()
 
 
 
