@@ -4,11 +4,12 @@ def solution(survey, choices):
     for char, choice in zip(survey, choices):
         if choice == 4:
             continue
-        elif choice- 4 < 0:  # 비동의쪽 고른 경우
-            char_score[char[0]] += choice
+        elif choice - 4 < 0:  # 비동의쪽 고른 경우
+            char_score[char[0]] -= choice - 4
         else:                       # 동의쪽
             char_score[char[1]] += choice - 4
 
+    # 성격 유형 정하기 
     if char_score['R'] >= char_score['T']:
         answer += 'R'
     else:
