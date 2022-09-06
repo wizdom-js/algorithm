@@ -1,27 +1,27 @@
 def solution(survey, choices):
     answer = ''
-    char_type = {'R': 0, 'T': 0, 'F': 0, 'C': 0, 'M': 0, 'J': 0, 'A': 0, 'N': 0}
-    for idx, question in enumerate(survey):
-        if choices[idx] == 4:
+    char_score = {'R': 0, 'T': 0, 'F': 0, 'C': 0, 'M': 0, 'J': 0, 'A': 0, 'N': 0}
+    for char, choice in zip(survey, choices):
+        if choice == 4:
             continue
-        elif choices[idx] - 4 < 0:
-            char_type[question[0]] += abs(choices[idx] - 4)
-        else:  # right
-            char_type[question[1]] += abs(choices[idx] - 4)
+        elif choice- 4 < 0:  # 비동의쪽 고른 경우
+            char_score[char[0]] += choice
+        else:                       # 동의쪽
+            char_score[char[1]] += choice - 4
 
-    if char_type['R'] >= char_type['T']:
+    if char_score['R'] >= char_score['T']:
         answer += 'R'
     else:
         answer += 'T'
-    if char_type['C'] >= char_type['F']:
+    if char_score['C'] >= char_score['F']:
         answer += 'C'
     else:
         answer += 'F'
-    if char_type['J'] >= char_type['M']:
+    if char_score['J'] >= char_score['M']:
         answer += 'J'
     else:
         answer += 'M'
-    if char_type['A'] >= char_type['N']:
+    if char_score['A'] >= char_score['N']:
         answer += 'A'
     else:
         answer += 'N'
