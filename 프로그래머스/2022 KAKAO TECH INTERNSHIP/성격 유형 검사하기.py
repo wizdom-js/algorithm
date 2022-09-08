@@ -9,7 +9,7 @@ def solution(survey, choices):
         else:                       # 동의쪽
             char_score[char[1]] += choice - 4
 
-    # 성격 유형 정하기 
+    # 성격 유형 정하기
     if char_score['R'] >= char_score['T']:
         answer += 'R'
     else:
