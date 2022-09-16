@@ -38,7 +38,7 @@ n = int(input())
 board = [list(map(int, input().split())) for _ in range(n)]
 
 move = 0
-direction = [[-1, 0], [0, -1], [1, 0], [0, 1]]  # 토네이도 이동 방향 [y, x] => 상, 좌, 상, 우 (시작은 좌부터)
+direction = [[-1, 0], [0, -1], [1, 0], [0, 1]]  # 토네이도 이동 방향 [y, x] => 상, 좌, 하, 우 (시작은 좌부터)
 tornado = [n//2, n//2]  # 토네이도 시작 중간지점
 answer = 0
 
@@ -55,7 +55,7 @@ while tornado[1] != -1:
         answer += move_sand()
         board[tornado[0]][tornado[1]] = 0
 
-    # 모래 퍼지는 비율 -90도로 전환 
+    # 모래 퍼지는 비율 -90도로 전환
     ratio = list(reversed(list(zip(*ratio))))
 
     go += 1
