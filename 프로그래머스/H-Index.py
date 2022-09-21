@@ -9,4 +9,4 @@ def solution(citations):
             return quotation_idx
         quotation_idx += 1
 
-    return quotation_idx    # 피인용 횟수가 다 같은 경우 
+    return quotation_idx    # 피인용 횟수가 다 같은 경우
