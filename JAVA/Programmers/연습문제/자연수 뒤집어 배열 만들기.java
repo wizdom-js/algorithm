@@ -2,8 +2,7 @@ import java.util.*;
 
 class Solution {
     public int[] solution(long n) {
-        int[] answer = {};
-        answer = new int[(int)Math.log10(n)+1];
+        int[] answer = new int[(int)Math.log10(n)+1];
 
         int i = 0;
         while(n > 0) {
