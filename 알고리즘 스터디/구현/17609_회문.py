@@ -26,13 +26,13 @@ for _ in range(t):
                 break
 
             # 왼쪽 문자열 삭제 후 회문이 된다면
-            if string[l+1] == string[r] and check_palindrome(l+1, r):
+            if check_palindrome(l+1, r):
                 l += 1
                 answer = 1
                 break
 
             # 오른쪽 문자열 삭제 후 회문이 된다면
-            if string[l] == string[r-1] or check_palindrome(l, r-1):
+            if check_palindrome(l, r-1):
                 r -= 1
                 answer = 1
 
