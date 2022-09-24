@@ -43,7 +43,7 @@ class Solution {
 
         for (String c : completion) {
             int cnt = hashMap.get(c);
-            hashMap.replace(c, cnt - 1);
+            hashMap.put(c, cnt - 1);
         }
 
         for (String p : hashMap.keySet()) {
