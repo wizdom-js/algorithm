@@ -6,19 +6,23 @@ class Solution {
         Queue<Integer> bridge = new LinkedList<>();
         int bridge_weight = 0;
 
-        // bridge.offer(0);
-        // bridge.offer(0);
-        int idx = 0;
-        while (idx < truck_weights.length) {
-            int out_truck = bridge.poll();
-
-            int truck = truck_weights[idx];
-            if (bridge_weight + truck <= weight){
-                bridge.offer(truck);
-                bridge_weight += truck;
+        for (int truck : truck_weights) {
+            while (true) {
+                if (bridge.size() < bridge_length) {
+                    if (bridge_weight + truck <= weight) {
+                        bridge.offer(truck);
+                        bridge_weight += truck;
+                        answer++;
+                        break;
+                    } else {
+                        bridge.offer(0);
+                        answer++;
+                    }
+                } else {
+                    bridge_weight -= bridge.poll();
+                }
             }
-            idx++;
         }
-        return answer;
+        return answer + bridge_length;
     }
 }
