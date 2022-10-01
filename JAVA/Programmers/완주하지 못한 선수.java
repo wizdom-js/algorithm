@@ -1,8 +1,6 @@
 import java.util.*;
 
 // 처음 풀었던 내용
-import java.util.*;
-
 class Solution {
     public String solution(String[] participant, String[] completion) {
         String answer = "";
@@ -33,6 +31,7 @@ class Solution {
     }
 }
 
+// 개선된 코드
 class Solution {
     public String solution(String[] participant, String[] completion) {
         String answer = "";
