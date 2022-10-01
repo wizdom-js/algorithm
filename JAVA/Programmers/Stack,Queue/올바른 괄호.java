@@ -25,8 +25,6 @@ class Solution {
 }
 
 // 스택 쓰지 않은 풀이
-import java.util.*;
-
 class Solution {
     boolean solution(String s) {
         int count = 0;
