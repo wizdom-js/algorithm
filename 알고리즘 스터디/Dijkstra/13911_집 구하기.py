@@ -11,10 +11,12 @@ def dijkstra(store):
         min_distance = mac_distance
         for mac in mac_v:
             heapq.heappush(queue, [0, mac])
+            dist[mac] = 0
     else:
         min_distance = star_distance
         for star in star_v:
             heapq.heappush(queue, [0, star])
+            dist[star] = 0
 
     while queue:
         d, now = heapq.heappop(queue)
@@ -32,26 +34,31 @@ def dijkstra(store):
     return dist
 
 
-input_form = sys.stdin.readline().split()
-v_n, road_n = map(int, input_form)    # 정점의 개수, 도로의 개수
+input = sys.stdin.readline
+v_n, road_n = map(int, input().split())    # 정점의 개수, 도로의 개수
 
 visit = [[] for _ in range(v_n + 1)]
 for _ in range(road_n):
-    road1, road2, w = map(int, input_form)
+    road1, road2, w = map(int, input().split())
     visit[road1].append([road2, w])
     visit[road2].append([road1, w])
 
-mac_n, mac_distance = map(int, input_form)
-mac_v = list(map(int, input_form))
+mac_n, mac_distance = map(int, input().split())
+mac_v = list(map(int, input().split()))
 
-star_n, star_distance = map(int, input_form)
-star_v = list(map(int, input_form))
+star_n, star_distance = map(int, input().split())
+star_v = list(map(int, input().split()))
 
 mac_dist = dijkstra("m")
 star_dist = dijkstra("s")
 
+mac_star_v = set(mac_v)
+mac_star_v.update(star_v)
+
 answer = float('inf')
 for i in range(1, v_n + 1):
+    if i in mac_star_v : continue
+
     distance = mac_dist[i] + star_dist[i]
     if distance < answer:
         answer = distance
