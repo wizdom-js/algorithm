@@ -41,7 +41,7 @@ def solution(s):
     set_list.sort(key=lambda x: len(x))
 
     num_dict = dict()
-    answer = set()
+    answer = []
     for num_set in set_list:
         for num in num_set:
             if not num in num_dict:
