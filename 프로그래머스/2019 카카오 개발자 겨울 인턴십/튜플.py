@@ -55,3 +55,59 @@ def solution(s):
                 answer.append(num)
 
     return answer
+
+
+# 집합 안의 숫자 count 형식
+def solution(s):
+    num_dict = dict()
+    str_num = ""
+    idx = 2
+    while idx < len(s):
+        if s[idx] == ",":
+            pass
+        elif s[idx] == "}":
+            idx += 2  # 쉼표(,), 열린 괄호({) 뛰어넘기 위해 +2
+        else:
+            str_num += s[idx]
+            idx += 1
+            continue
+
+        # 숫자 카운트
+        if num_dict.get(str_num):
+            num_dict[str_num] += 1
+        else:
+            num_dict[str_num] = 1
+        str_num = ""
+
+        idx += 1
+
+    # 카운트 많이 된 숫자가 먼저 answer에 들어가야하므로 정렬
+    tmp = sorted(num_dict.items(), key=lambda x: x[1], reverse=True)
+    answer = []
+    for num in tmp:
+        answer.append(int(num[0]))
+
+    return answer
+
+
+# strip + split + count => 젤 빠름 
+def solution(s):
+    num_dict = dict()
+
+    processed_s = s.lstrip('{').rstrip('}').split('},{')
+
+    for num_set in processed_s:
+        set_list = list(map(int, num_set.split(',')))
+        for num in set_list:
+            if num_dict.get(num):
+                num_dict[num] += 1
+            else:
+                num_dict[num] = 1
+
+    # 카운트 많이 된 숫자가 먼저 answer에 들어가야하므로 정렬
+    tmp = sorted(num_dict.items(), key=lambda x: x[1], reverse=True)
+    answer = []
+    for num in tmp:
+        answer.append(int(num[0]))
+
+    return answer
