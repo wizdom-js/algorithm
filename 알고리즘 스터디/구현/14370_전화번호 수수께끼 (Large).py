@@ -24,7 +24,7 @@ for tc in range(1, testcase+1):
         else:
             alphabet_dict[s] = 1
 
-    answer = ''
+    answer = []
     for i in range(10):
         need_alphabet = need_alphabet_list[i]
         flag = True
@@ -34,7 +34,7 @@ for tc in range(1, testcase+1):
                     flag = False
                     break
             else:
-                answer += str(numbers_order[i])
+                answer.append(str(numbers_order[i]))
                 for alphabet in need_alphabet:
                     alphabet_dict[alphabet] -= need_alphabet[alphabet]
 
