@@ -2,6 +2,8 @@ import sys
 sys.stdin = open('input.txt')
 
 import heapq
+from collections import deque
+
 
 def dijkstra():
     queue = []
@@ -26,6 +28,25 @@ def dijkstra():
                 heapq.heappush(queue, [-nw, nxt])
 
 
+def bfs(weight):
+    visited = [0 for _ in range(n + 1)]
+    visited[factory1] = True
+
+    queue = deque([factory1])
+    while queue:
+        now = queue.popleft()
+
+        if now == factory2:
+            return True
+
+        for nxt, nxt_w in bridge_info[now]:
+            if not visited[nxt] and weight <= nxt_w:
+                visited[nxt] = True
+                queue.append(nxt)
+
+    return False
+
+
 n, m = map(int, input().split())
 bridge_info = [[] for _ in range(n+1)]
 for _ in range(m):
@@ -35,9 +56,22 @@ for _ in range(m):
 
 factory1, factory2 = map(int, input().split())
 
+
 for i in range(1, n+1):
     bridge_info[i].sort(key = lambda x: -x[1])
 
-dist = [0 for _ in range(n+1)]
-dijkstra()
-print(dist[factory2])
+# 풀이 1 => 다익스트라
+# dist = [0 for _ in range(n+1)]
+# dijkstra()
+# print(dist[factory2])
+
+# 풀이 2 => BFS + 이분탐색
+low, high = 1, 1000000000
+while low <= high:
+    mid = (low + high) // 2
+    if bfs(mid):
+        low = mid + 1
+    else:
+        high = mid - 1
+
+print(low, high)
