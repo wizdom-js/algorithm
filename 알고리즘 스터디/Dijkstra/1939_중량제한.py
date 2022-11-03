@@ -6,16 +6,18 @@ from collections import deque
 
 
 def dijkstra():
+    dist = [0 for _ in range(n + 1)]
+    dist[factory1] = 999999999999
+
     queue = []
     heapq.heappush(queue, [-999999999999, factory1])
-    dist[factory1] = 999999999999
 
     while queue:
         w, now = heapq.heappop(queue)
         w *= -1
 
         if now == factory2:
-            break
+            return now
 
         if dist[now] > w:
             continue
@@ -61,9 +63,7 @@ for i in range(1, n+1):
     bridge_info[i].sort(key = lambda x: -x[1])
 
 # 풀이 1 => 다익스트라
-# dist = [0 for _ in range(n+1)]
-# dijkstra()
-# print(dist[factory2])
+# print(dijkstra())
 
 # 풀이 2 => BFS + 이분탐색
 low, high = 1, 1000000000
