@@ -8,6 +8,7 @@ def solution(n, s):
 
         for i in range(n):
             answer.append(s_n)
+
         s_p_n = s % n
 
         idx = len(answer) - 1
