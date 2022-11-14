@@ -17,7 +17,7 @@ def dijkstra():
         w *= -1
 
         if now == factory2:
-            return now
+            return w
 
         if dist[now] > w:
             continue
