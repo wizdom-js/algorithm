@@ -8,7 +8,7 @@ def solution(n, k):
         temp = math.factorial(n) // n
         idx = k // temp
         k = k % temp
-        
+
         if k == 0:
             answer.append(number_list.pop(idx - 1))
         else:
