@@ -13,17 +13,18 @@ class Solution {
 
         sum = s1+s2;
 
+        // sum이 홀수인 경우
         if (sum%2==1) return -1;
 
-        sum/=2;
+        sum /= 2;
 
         int p1 = 0, p2 = 0;
         int limit = queue1.length*2;
 
-        while (p1<=limit && p2<=limit) {
+        while (p1 <= limit && p2 <= limit) {
             if (s1 == sum) return p1+p2;
 
-            if (s1>sum) {
+            if (s1 > sum) {
                 s1-=q1.peek();
                 s2+=q1.peek();
                 q2.add(q1.poll());
@@ -36,6 +37,7 @@ class Solution {
             }
         }
 
+        // s1 == s2 없는 경우 
         return -1;
     }
 }
